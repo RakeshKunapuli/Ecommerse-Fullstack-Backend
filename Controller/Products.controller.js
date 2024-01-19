@@ -1,5 +1,4 @@
-const products = require('../Model/Products')
-
+const products = require('../Model/Products.model')
 
 module.exports.addProducts= async (req,res)=>{
     try{
@@ -79,7 +78,7 @@ module.exports.updateProduct = async (req,res)=>{
         existingProduct.category = req.body.category || existingProduct.category
         existingProduct.brand = req.body.brand || existingProduct.brand
         existingProduct.thumbnail = req.body.thumbnail || existingProduct.thumbnail
-        
+
         existingProduct.images = [...existingProduct.images,...req.body.images]
 
         const updatedproducts = await existingProduct.save()
@@ -96,3 +95,7 @@ module.exports.updateProduct = async (req,res)=>{
         })
     }
 }
+
+
+
+

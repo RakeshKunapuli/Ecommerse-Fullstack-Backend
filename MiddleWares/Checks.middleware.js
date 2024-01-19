@@ -1,3 +1,5 @@
+
+
 module.exports.Checks = async (req, res, next) => {
     try {
         const { title, description, price, category, brand, thumbnail, images } = req.body;
@@ -15,6 +17,5 @@ module.exports.Checks = async (req, res, next) => {
         });
     }
 };
-
 
 
