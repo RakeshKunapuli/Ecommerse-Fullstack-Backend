@@ -24,8 +24,9 @@ const UsersSchema = new mongoose.Schema(
             required:true
         },
         mobileno:{
-            type:String,
-            required:true
+            type:Number,
+            required:true,
+            unique:true
         }
 
 },{
