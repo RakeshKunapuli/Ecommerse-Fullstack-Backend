@@ -4,8 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-module.exports.signUp = async (req, res) => {
-  try {
+module.exports.signUp = async (req, res)=>{
+    try {
     const { firstname, lastname, email, password, address, mobileno } =
       req.body;
     if (
@@ -18,6 +18,7 @@ module.exports.signUp = async (req, res) => {
     ) {
       return res.status(400).json({
         msg: "All Fields Are required",
+        
       });
     }
 
@@ -34,6 +35,14 @@ module.exports.signUp = async (req, res) => {
       return res.status(404).json({
         msg: "Email format is not Correct",
         email: email,
+      });
+    }
+
+    const mobilenoCheck = await User.findOne({mobileno:mobileno})
+    if(mobilenoCheck){
+      return res.status(400).json({
+        msg: "Mobile No Already exists",
+        mobileno:mobilenoCheck,
       });
     }
 
@@ -116,6 +125,8 @@ module.exports.login = async (req, res) => {
     return res.status(200).json({
       message: "login succesfull",
       email: user.email,
+      email: user.email,
+      name: `${user.firstname} ${user.lastname}`,
       id: user._id,
       token,
     });
@@ -126,3 +137,19 @@ module.exports.login = async (req, res) => {
     });
   }
 };
+
+module.exports.allusers = async (req,res)=>{
+  try{
+
+    const users = await User.find()
+    return res.status(200).json({
+      msg:"All Users re fetched",
+      data:users
+    })
+
+  }catch(err){
+    return res.status(500).json({
+      msg:"Internal Server Error"
+    })
+  }
+}
