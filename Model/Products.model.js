@@ -14,6 +14,7 @@ price:{
     type:String,
     required:true
 },
+
 category:{
     type:String,
     required:true
@@ -37,4 +38,6 @@ images:{
 
 const products = mongoose.model('Products',ProductsSchema)
 module.exports = products
+
+
 

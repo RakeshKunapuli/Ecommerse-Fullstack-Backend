@@ -99,12 +99,12 @@ module.exports.updateProduct = async (req,res)=>{
 module.exports.getProductById = async (req,res)=>{
     try{
         const productId = req.params.id
-
         if(!productId){
             return res.status(401).json({
                 msg:"ProductId is required"
             })
         }
+        
         const product = await products.findById(productId)
         if(!product){
             return res.status(401).json({
