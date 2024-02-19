@@ -121,15 +121,14 @@ module.exports.login = async (req, res) => {
       }
     );
 
-
     return res.status(200).json({
       message: "login succesfull",
-      email: user.email,
       email: user.email,
       name: `${user.firstname} ${user.lastname}`,
       id: user._id,
       token,
     });
+    
   } catch (err) {
     return res.status(500).json({
       msg: "Internal server Error",
