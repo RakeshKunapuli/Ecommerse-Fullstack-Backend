@@ -34,5 +34,4 @@ const UsersSchema = new mongoose.Schema(
 }
 )
 
-const User = mongoose.model('signup',UsersSchema)
-module.exports = User
+module.exports = mongoose.model('signup',UsersSchema)
