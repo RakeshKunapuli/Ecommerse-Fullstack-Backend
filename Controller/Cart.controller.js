@@ -25,7 +25,10 @@ module.exports.addToCart = async (req, res) => {
     if (cart) {
       cart.quantity += quantity;
     } else {
-      cart = new Cart({ product: productId, quantity, userId });
+      cart = new Cart({
+         product: productId,
+          quantity,
+           userId });
     }
     await cart.save();
     return res.status(200).json({
@@ -40,7 +43,6 @@ module.exports.addToCart = async (req, res) => {
 };
 
 module.exports.getAllCartItems = async (req, res) => {
-
   try {
     const userEmail  = req.params.email
     const cartItems = await Cart.find({userId:userEmail}).populate("product");
@@ -50,3 +52,22 @@ module.exports.getAllCartItems = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+
+module.exports.removeCartItems = async (req,res)=>{
+  try{
+    const checkitem = await Cart.findById(req.params.id)
+    if(!checkitem){
+      return res.status(404).json({
+        msg:"Item not found"
+      })
+    }
+
+    const deleteitem = await Cart.findByIdAndDelete(req.params.id)
+    return res.status(200).json({
+      msg:"Item Deleted Succesfully"
+    })
+
+  }catch(error){
+    return res.status(500).json({msg:"Internal server error ",error:error})
+  }
+}
