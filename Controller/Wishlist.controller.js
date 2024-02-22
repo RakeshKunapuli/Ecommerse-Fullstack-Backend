@@ -24,7 +24,7 @@ try{
     let wishlist = await Wishlist.findOne({ product: productId ,userId:userId});
     if (wishlist) {
       return res.status(200).json({
-        msg:"Product Alredy Added to Wishlist"
+        msg:"Product Already Added to Wishlist"
       })
     }else{
         wishlist = new Wishlist({
