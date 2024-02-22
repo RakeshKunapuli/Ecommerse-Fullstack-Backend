@@ -5,14 +5,18 @@ const cors = require("cors");
 require('dotenv').config()
 const productroutes = require("./Routes/product.routes");
 const userRoutes = require("../Back-End/Routes/User.Routes");
+const cartroutes = require('../Back-End/Routes/cart.routes')
+const wishlistroutes = require("../Back-End/Routes/Wishlist.routes")
   
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/product", productroutes);
+app.use("/products", productroutes);
 app.use("/user", userRoutes);
+app.use("/cart",cartroutes)
+app.use("/wishlist",wishlistroutes)
 
 app.use("/", (req, res) => {
   return res.status(200).json({
