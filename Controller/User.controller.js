@@ -2,6 +2,7 @@ const User = require("../Model/User.model");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const transporter = require('../mailer')
 require("dotenv").config();
 
 module.exports.signUp = async (req, res)=>{
@@ -124,8 +125,10 @@ module.exports.login = async (req, res) => {
     return res.status(200).json({
       message: "login succesfull",
       email: user.email,
-      name: `${user.firstname} ${user.lastname}`,
+      firstname: `${user.firstname}`,
+      lastname: `${user.lastname}`,
       id: user._id,
+      address:user.address,
       token,
     });
     

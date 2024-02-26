@@ -7,6 +7,7 @@ const productroutes = require("./Routes/product.routes");
 const userRoutes = require("../Back-End/Routes/User.Routes");
 const cartroutes = require('../Back-End/Routes/cart.routes')
 const wishlistroutes = require("../Back-End/Routes/Wishlist.routes")
+const orderroutes = require("../Back-End/Routes/Order.routes")
   
 
 app.use(cors());
@@ -17,6 +18,7 @@ app.use("/products", productroutes);
 app.use("/user", userRoutes);
 app.use("/cart",cartroutes)
 app.use("/wishlist",wishlistroutes)
+app.use("/order",orderroutes)
 
 app.use("/", (req, res) => {
   return res.status(200).json({
