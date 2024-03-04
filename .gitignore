@@ -21,3 +21,6 @@ build/
 # Ignore OS-specific files
 Thumbs.db
 .DS_Store
+.env
+text.http
+mailer.js
