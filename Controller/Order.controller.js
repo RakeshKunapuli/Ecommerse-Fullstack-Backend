@@ -3,8 +3,8 @@ const Cart = require("../Model/Cart.model")
 
 module.exports.addOrder = async (req, res) => {
   try {
-    const { userId, address } = req.body;
-    const cartItems = await Cart.find({ userId }).populate('product');
+    const { userId } = req.body;
+    const cartItems = await Cart.find({ userId:_id }).populate('product');
     const items = cartItems.map(cartItem => ({
       product: cartItem.product._id,
       quantity: cartItem.quantity

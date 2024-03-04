@@ -54,6 +54,7 @@ module.exports.validator = async (req, res, next) => {
     }
 
     req.user = decoded;
+    req.userId = decoded.id
     next();
   });
 };
