@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 require('dotenv').config()
-const productroutes = require("./Routes/product.routes");
+const productroutes = require("../Back-End/Routes/product.routes");
 const userRoutes = require("../Back-End/Routes/User.Routes");
 const cartroutes = require('../Back-End/Routes/cart.routes')
 const wishlistroutes = require("../Back-End/Routes/Wishlist.routes")
