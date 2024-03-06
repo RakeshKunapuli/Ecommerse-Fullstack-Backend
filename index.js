@@ -21,6 +21,7 @@ app.use("/wishlist",wishlistroutes)
 app.use("/order",orderroutes)
 
 app.use("/", (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
   return res.status(200).json({
     message: "Server is Running",
   });
